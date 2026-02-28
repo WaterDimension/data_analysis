@@ -311,9 +311,24 @@ def generate_line_bar_chart(df, file_name):
         indicator_name = df.columns[0]
         year_columns = df.columns[1:]
         
+        # 定义颜色映射，确保每个年份使用固定的颜色
+        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', 
+                  '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
+                  '#aec7e8', '#ffbb78', '#98df8a', '#ff9896', '#c5b0d5',
+                  '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5']
+        
+        # 创建年份到颜色的映射字典
+        year_color_map = {year: colors[i % len(colors)] for i, year in enumerate(year_columns)}
+        
+        # 使用堆叠柱状图
+        # 初始化底部位置
+        bottom = [0] * len(df)
+        
         # 绘制数据
-        for i, year in enumerate(year_columns):
-            ax.bar(df[indicator_name], df[year], label=year)
+        for year in year_columns:
+            ax.bar(df[indicator_name], df[year], label=year, color=year_color_map[year], bottom=bottom)
+            # 更新底部位置
+            bottom = [bottom[i] + df[year].iloc[i] for i in range(len(df))]
         
         ax.set_title(f'{file_name} 柱线图')
         ax.set_xlabel(indicator_name)
@@ -352,9 +367,24 @@ def generate_bar_chart(df, file_name):
         indicator_name = df.columns[0]
         year_columns = df.columns[1:]
         
+        # 定义颜色映射，确保每个年份使用固定的颜色
+        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', 
+                  '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
+                  '#aec7e8', '#ffbb78', '#98df8a', '#ff9896', '#c5b0d5',
+                  '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5']
+        
+        # 创建年份到颜色的映射字典
+        year_color_map = {year: colors[i % len(colors)] for i, year in enumerate(year_columns)}
+        
+        # 使用堆叠水平条形图
+        # 初始化左侧位置
+        left = [0] * len(df)
+        
         # 绘制数据
-        for i, year in enumerate(year_columns):
-            ax.barh(df[indicator_name], df[year], label=year)
+        for year in year_columns:
+            ax.barh(df[indicator_name], df[year], label=year, color=year_color_map[year], left=left, alpha=0.8)
+            # 更新左侧位置
+            left = [left[i] + df[year].iloc[i] for i in range(len(df))]
         
         ax.set_title(f'{file_name} 条形图')
         ax.set_xlabel('数值')
@@ -424,6 +454,11 @@ def generate_data_map(df, file_name):
                 print("山西数据不需要生成地图")
                 return
             
+            # 检查是否是全国性数据（如居民人均收入情况、按国别分游客等），这些数据不需要生成地图
+            if "居民人均" in file_name or "全国居民" in file_name or "按国别分" in file_name or "按性别、年龄和事由分" in file_name or "旅游业发展情况" in file_name or "国际旅游收入及构成" in file_name:
+                print("全国性数据，跳过地图生成")
+                return
+            
             # 检查数据是否为空
             if df.empty:
                 print("数据为空，跳过地图生成")
@@ -455,7 +490,7 @@ def generate_data_map(df, file_name):
             
             # 检查是否有数据
             if not data:
-                print("没有找到省份数据，跳过地图生成")
+                print("没有有关省份数据，跳过地图生成")
                 return
             
             # 获取指标名称

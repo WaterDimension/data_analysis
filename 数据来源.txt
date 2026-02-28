@@ -1,0 +1,13 @@
+序号,表格名称,浏览器地址,按顺序点击步骤
+1,旅游业发展情况年度数据,https://data.stats.gov.cn/easyquery.htm?cn=C01,旅游业 → 旅游业发展情况 → 时间：年度数据
+2,旅游业发展情况年度数据,https://data.stats.gov.cn/easyquery.htm?cn=C01,旅游业 →国际旅游收入及构成  → 时间：年度数据
+3,国内旅游情况年度数据,https://data.stats.gov.cn/easyquery.htm?cn=C01,旅游业 → 国内旅游情况 → 时间：年度数据
+4.按性别、年龄和事由分外国入境游客年度数据,https://data.stats.gov.cn/easyquery.htm?cn=C01,旅游业 →按性别、年龄和事由分外国入境游客年度数据 → 时间：年度数据
+5.按国别分外国入境游客,https://data.stats.gov.cn/easyquery.htm?cn=C01,旅游业 → 按国别分外国入境游客 → 时间：年度数据
+6.山西接待入境过夜游客,https://data.stats.gov.cn/easyquery.htm?cn=E0103，旅游业 → 接待国外游客 → 地区：山西 → 时间：年度数据
+7.全国接待入境过夜游客,https://data.stats.gov.cn/easyquery.htm?cn=E0103，旅游业 → 接待国外游客→接待入境过夜游客  → 时间：年度数据
+8.山西国际旅游(外汇)收入,https://data.stats.gov.cn/easyquery.htm?cn=E0103，旅游业 → 国际旅游(外汇)收入 → 地区：山西 → 时间：年度数据
+9.全国国际旅游(外汇)收入,https://data.stats.gov.cn/easyquery.htm?cn=E0103，旅游业 → 国际旅游(外汇)收入 → 地区：序列(全国分省) → 时间：年度数据
+10.全国居民人均收入情况,https://data.stats.gov.cn/easyquery.htm?cn=C01,人民生活 → 居民收入 → 时间：年度数据
+11.山西地区生产总值，https://data.stats.gov.cn/easyquery.htm?cn=E0103,国民经济核算 → 地区生产总值 → 地区：山西省 → 时间：年度数据
+12.全国地区生产总值,https://data.stats.gov.cn/easyquery.htm?cn=E0103,国民经济核算 → 地区生产总值 → 地区：全国分省 → 时间：年度数据
